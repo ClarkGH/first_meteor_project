@@ -9,6 +9,12 @@ if(Meteor.isClient){
     }
   })
 
+  Template.leaderboard.events({
+    'click': function(){
+      console.log("I work!");
+    }
+  });
+
 }
 
 if(Meteor.isServer){
