@@ -8,9 +8,9 @@
 
 <template name="leaderboard">
   <p>Hello World!</p>
-  {{#each gamer}}
-    {{name}}
-    {{score}}
-    <br>
-  {{/each}}
+  <ul>
+    {{#each gamer}}
+      <li>{{name}}: {{score}}</li>
+    {{/each}}
+  </ul>
 </template>
