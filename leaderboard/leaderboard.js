@@ -1,23 +1,22 @@
-if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault("counter", 0);
+// Keeping the variable global for this example.
+GamersList = new Meteor.Collection('gamers');
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get("counter");
+if(Meteor.isClient){
+
+  Template.leaderboard.helpers({
+    gamer: function(){
+      return GamersList.find();
     }
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set("counter", Session.get("counter") + 1);
+  Template.leaderboard.events({
+    'click li.gamer': function(){
+      console.log("I work!");
     }
   });
+
 }
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
+if(Meteor.isServer){
+
 }
