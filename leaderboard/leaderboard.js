@@ -7,10 +7,10 @@ if(Meteor.isClient){
     gamer: function(){
       return GamersList.find();
     }
-  })
+  });
 
   Template.leaderboard.events({
-    'click': function(){
+    'click li.gamer': function(){
       console.log("I work!");
     }
   });
