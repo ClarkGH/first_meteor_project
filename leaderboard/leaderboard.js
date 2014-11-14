@@ -2,9 +2,13 @@
 GamersList = new Meteor.Collection('gamers');
 
 if(Meteor.isClient){
-  console.log("This code only runs in the client")
+
+  Template.leaderboard.gamer = function(){
+    return "This text will run from the template."
+  }
+
 }
 
 if(Meteor.isServer){
-  console.log("This code only runs on the server")
+
 }
