@@ -5,7 +5,7 @@ if(Meteor.isClient){
 
   Template.leaderboard.helpers({
     gamer: function(){
-        return "This text will run from the template."
+      return GamersList.find();
     }
   })
 
