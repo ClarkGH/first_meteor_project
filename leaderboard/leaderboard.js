@@ -3,9 +3,11 @@ GamersList = new Meteor.Collection('gamers');
 
 if(Meteor.isClient){
 
-  Template.leaderboard.gamer = function(){
-    return "This text will run from the template."
-  }
+  Template.leaderboard.helpers({
+    gamer: function(){
+        return "This text will run from the template."
+    }
+  })
 
 }
 
