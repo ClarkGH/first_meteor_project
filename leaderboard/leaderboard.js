@@ -23,6 +23,7 @@ if(Meteor.isClient){
     'click li.gamer': function(){
       var gamerId = this._id;
       Session.set('selectedGamer', gamerId);
+
       var selectedGamer = Session.get('selectedGamer');
       console.log(selectedGamer);
     }
