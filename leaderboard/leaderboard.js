@@ -9,7 +9,12 @@ if(Meteor.isClient){
     },
 
     selectedClass: function(){
-      return "selected"
+      var gamerId = this._id;
+      var selectedGamer = Session.get('selectedGamer')
+
+      if(selectedGamer === gamerId){
+        return "selected"
+      }
     }
 
   });
