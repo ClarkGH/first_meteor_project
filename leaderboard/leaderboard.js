@@ -11,9 +11,10 @@ if(Meteor.isClient){
 
   Template.leaderboard.events({
     'click li.gamer': function(){
-      Session.set('selectedGamer', 'session val test');
+      var gamerId = this._id;
+      Session.set('selectedGamer', gamerId);
       var selectedGamer = Session.get('selectedGamer');
-      console.log(selectedGamer)
+      console.log(selectedGamer);
     }
   });
 
