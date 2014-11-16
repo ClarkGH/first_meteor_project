@@ -6,12 +6,26 @@ if(Meteor.isClient){
   Template.leaderboard.helpers({
     gamer: function(){
       return GamersList.find();
+    },
+
+    selectedClass: function(){
+      var gamerId = this._id;
+      var selectedGamer = Session.get('selectedGamer')
+
+      if(selectedGamer === gamerId){
+        return "selected"
+      }
     }
+
   });
 
   Template.leaderboard.events({
     'click li.gamer': function(){
-      console.log("I work!");
+      var gamerId = this._id;
+      Session.set('selectedGamer', gamerId);
+
+      var selectedGamer = Session.get('selectedGamer');
+      console.log(selectedGamer);
     }
   });
 
