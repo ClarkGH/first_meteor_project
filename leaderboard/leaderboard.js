@@ -6,7 +6,12 @@ if(Meteor.isClient){
   Template.leaderboard.helpers({
     gamer: function(){
       return GamersList.find();
+    },
+
+    selectedClass: function(){
+      return "selected"
     }
+
   });
 
   Template.leaderboard.events({
