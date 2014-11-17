@@ -46,6 +46,12 @@ if(Meteor.isClient){
 
 }
 
+Template.addGamerForm.events({
+  'submit form': function(){
+    console.log("Form is working")
+  }
+});
+
 if(Meteor.isServer){
 
 }
