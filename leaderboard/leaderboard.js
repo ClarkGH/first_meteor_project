@@ -57,7 +57,7 @@ if(Meteor.isClient){
       event.preventDefault();
       var gamerNameVar = event.target.gamerName.value;
       var currentUserId = Meteor.userId();
-      Meteor.call('insertGamerData')
+      Meteor.call('insertGamerData', gamerNameVar);
     }
   });
 
@@ -70,10 +70,10 @@ if(Meteor.isServer){
   });
 
   Meteor.methods({
-    'insertGamerData': function(){
+    'insertGamerData': function(gamerNameVar){
       var currentUserId = Meteor.userId();
       GamersList.insert({
-        name: 'Bilbo',
+        name: gamerNameVar,
         score: 0,
         createdBy: currentUserId
       });
