@@ -3,6 +3,8 @@ GamersList = new Meteor.Collection('gamers');
 
 if(Meteor.isClient){
 
+  Meteor.subscribe('theGamers');
+
   Template.leaderboard.helpers({
     gamer: function(){
       var currentUserId = Meteor.userId();
@@ -66,5 +68,7 @@ if(Meteor.isClient){
 }
 
 if(Meteor.isServer){
-
+  Meteor.publish('theGamers', function(){
+    return GamersList.find();
+  });
 }
