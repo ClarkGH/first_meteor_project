@@ -26,6 +26,10 @@ if(Meteor.isClient){
 
       var selectedGamer = Session.get('selectedGamer');
       console.log(selectedGamer);
+    },
+
+    'click #increment': function(){
+      var selectedGamer = Session.get('selectedGamer');
     }
   });
 
