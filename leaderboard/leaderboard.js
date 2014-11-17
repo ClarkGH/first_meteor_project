@@ -30,7 +30,7 @@ if(Meteor.isClient){
 
     'click #increment': function(){
       var selectedGamer = Session.get('selectedGamer');
-      GamersList.update({_id: selectedGamer}, {$set: {score: 1});
+      GamersList.update({_id: selectedGamer}, {$inc: {score: 1} });
     }
   });
 
