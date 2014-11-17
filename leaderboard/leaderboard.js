@@ -5,7 +5,7 @@ if(Meteor.isClient){
 
   Template.leaderboard.helpers({
     gamer: function(){
-      return GamersList.find();
+      return GamersList.find({}, {sort: {score: -1, name: 1} });
     },
 
     selectedClass: function(){
@@ -15,6 +15,11 @@ if(Meteor.isClient){
       if(selectedGamer === gamerId){
         return "selected"
       }
+    },
+
+    'showSelectedGamer': function(){
+      var selectedGamer = Session.get('selectedGamer');
+      return GamersList.findOne(selectedGamer)
     }
 
   });
