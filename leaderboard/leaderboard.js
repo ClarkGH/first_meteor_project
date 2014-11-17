@@ -5,7 +5,8 @@ if(Meteor.isClient){
 
   Template.leaderboard.helpers({
     gamer: function(){
-      return GamersList.find({}, {sort: {score: -1, name: 1} });
+      var currentUserId = Meteor.userId();
+      return GamersList.find({ createdBy: currentUserId }, {sort: {score: -1, name: 1} });
     },
 
     selectedClass: function(){
@@ -53,9 +54,11 @@ if(Meteor.isClient){
     'submit form': function(event){
       event.preventDefault();
       var gamerNameVar = event.target.gamerName.value;
+      var currentUserId = Meteor.userId();
       GamersList.insert({
         name: gamerNameVar,
-        score: 0
+        score: 0,
+        createdBy: currentUserId
       });
     }
   });
