@@ -62,6 +62,7 @@ if(Meteor.isClient){
         score: 0,
         createdBy: currentUserId
       });
+      Meteor.call('sendLogMessage')
     }
   });
 
@@ -72,4 +73,11 @@ if(Meteor.isServer){
     var currentUserId = this.userId;
     return GamersList.find({ createdBy: currentUserId });
   });
+
+  Meteor.methods({
+    'sendLogMessage': function(){
+      console.log("Hello World");
+    }
+  });
+
 }
