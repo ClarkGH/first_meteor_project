@@ -57,12 +57,7 @@ if(Meteor.isClient){
       event.preventDefault();
       var gamerNameVar = event.target.gamerName.value;
       var currentUserId = Meteor.userId();
-      GamersList.insert({
-        name: gamerNameVar,
-        score: 0,
-        createdBy: currentUserId
-      });
-      Meteor.call('sendLogMessage')
+      Meteor.call('insertGamerData')
     }
   });
 
@@ -75,8 +70,13 @@ if(Meteor.isServer){
   });
 
   Meteor.methods({
-    'sendLogMessage': function(){
-      console.log("Hello World");
+    'insertGamerData': function(){
+      var currentUserId = Meteor.userId();
+      GamersList.insert({
+        name: 'Bilbo',
+        score: 0,
+        createdBy: currentUserId
+      });
     }
   });
 
