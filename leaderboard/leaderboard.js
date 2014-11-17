@@ -38,12 +38,12 @@ if(Meteor.isClient){
 
     'click #increment': function(){
       var selectedGamer = Session.get('selectedGamer');
-      GamersList.update({_id: selectedGamer}, {$inc: {score: 1} });
+      Meteor.call('modifyGamerScore', selectedGamer, 1)
     },
 
     'click #decrement': function(){
       var selectedGamer = Session.get('selectedGamer');
-      GamersList.update({_id: selectedGamer}, {$inc: {score: -1} });
+      Meteor.call('modifyGamerScore', selectedGamer, -1)
     },
 
     'click .remove': function(){
@@ -81,6 +81,10 @@ if(Meteor.isServer){
 
     'removeGamer': function(selectedGamer){
       GamersList.remove(selectedGamer)
+    },
+
+    'modifyGamerScore': function(selectedGamer, scoreVar){
+      GamersList.update({_id: selectedGamer}, {$inc: {score: scoreVar} });
     }
   });
 
