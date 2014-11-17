@@ -5,7 +5,7 @@ if(Meteor.isClient){
 
   Template.leaderboard.helpers({
     gamer: function(){
-      return GamersList.find();
+      return GamersList.find({}, {sort: {score: -1, name: 1} });
     },
 
     selectedClass: function(){
@@ -15,6 +15,11 @@ if(Meteor.isClient){
       if(selectedGamer === gamerId){
         return "selected"
       }
+    },
+
+    'showSelectedGamer': function(){
+      var selectedGamer = Session.get('selectedGamer');
+      return GamersList.findOne(selectedGamer)
     }
 
   });
@@ -26,6 +31,16 @@ if(Meteor.isClient){
 
       var selectedGamer = Session.get('selectedGamer');
       console.log(selectedGamer);
+    },
+
+    'click #increment': function(){
+      var selectedGamer = Session.get('selectedGamer');
+      GamersList.update({_id: selectedGamer}, {$inc: {score: 1} });
+    },
+
+    'click #decrement': function(){
+      var selectedGamer = Session.get('selectedGamer');
+      GamersList.update({_id: selectedGamer}, {$inc: {score: -1} });
     }
   });
 
