@@ -8,7 +8,7 @@ if(Meteor.isClient){
   Template.leaderboard.helpers({
     gamer: function(){
       var currentUserId = Meteor.userId();
-      return GamersList.find({ createdBy: currentUserId }, {sort: {score: -1, name: 1} });
+      return GamersList.find({}, {sort: {score: -1, name: 1} });
     },
 
     selectedClass: function(){
@@ -69,6 +69,7 @@ if(Meteor.isClient){
 
 if(Meteor.isServer){
   Meteor.publish('theGamers', function(){
-    return GamersList.find();
+    var currentUserId = this.userId;
+    return GamersList.find({ createdBy: currentUserId });
   });
 }
