@@ -41,6 +41,11 @@ if(Meteor.isClient){
     'click #decrement': function(){
       var selectedGamer = Session.get('selectedGamer');
       GamersList.update({_id: selectedGamer}, {$inc: {score: -1} });
+    },
+
+    'click .remove': function(){
+      var selectedGamer = Session.get('selectedGamer');
+      GamersList.remove(selectedGamer)
     }
   });
 
