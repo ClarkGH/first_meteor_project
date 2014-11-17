@@ -13,9 +13,11 @@
     {{#each gamer}}
       <li class="gamer {{selectedClass}}">{{name}}: {{score}}</li>
     {{/each}}
-      <input type="button" id="increment" value="Give Awesome">
-      <input type="button" id="decrement" value="Take Awesome">
-      <input type="button" class="remove" value="Remove Person">
+      {{#if currentUser}}
+        <input type="button" id="increment" value="Give Awesome">
+        <input type="button" id="decrement" value="Take Awesome">
+        <input type="button" class="remove" value="Remove Person">
+      {{/if}}
       {{#if showSelectedGamer}}
         <li>Selected Person: {{showSelectedGamer.name}}</li>
       {{/if}}
@@ -23,8 +25,10 @@
 </template>
 
 <template name="addGamerForm">
-  <form>
-    <input type="text" name="gamerName">
-    <input type="submit" value="Add Person">
-  </form>
+  {{#if currentUser}}
+    <form>
+      <input type="text" name="gamerName">
+      <input type="submit" value="Add Person">
+    </form>
+  {{/if}}
 </template>
