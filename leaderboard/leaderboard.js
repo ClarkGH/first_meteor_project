@@ -48,7 +48,7 @@ if(Meteor.isClient){
 
     'click .remove': function(){
       var selectedGamer = Session.get('selectedGamer');
-      GamersList.remove(selectedGamer)
+      Meteor.call('removeGamer', selectedGamer)
     }
   });
 
@@ -77,6 +77,10 @@ if(Meteor.isServer){
         score: 0,
         createdBy: currentUserId
       });
+    },
+
+    'removeGamer': function(selectedGamer){
+      GamersList.remove(selectedGamer)
     }
   });
 
